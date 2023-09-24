@@ -11,6 +11,7 @@
         :start=item.srcPos
         :end=item.dstPos
         :key=item.key
+        @openContextMenu="(e)=>{$emit('vconnectorRightClick', {event:e, item})}"
       />
       <connector
         v-for="item in fileLinkGraph"
@@ -19,6 +20,7 @@
         :end=item.dstPos
         :key="item.key"
         :box-height=item.boxHeight
+        @openContextMenu="(e)=>{$emit('connectorRightClick', {event:e, item})}"
       />
       <wheel-component
         v-for="(componentData, index) in currentComponent.descendants"
@@ -31,6 +33,7 @@
         @removeFileLink=onRemoveFileLink
         @addLink=onAddLink
         @removeLink=onRemoveLink
+        @openContextMenu="(e)=>{$emit('componentRightClick', e)}"
       />
       <input-file-box
         v-for="(parentOutputFile ,index) in currentComponent.outputFiles"
