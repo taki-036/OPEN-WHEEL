@@ -9,10 +9,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         
-      - name: Use Node.js 14.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14.x
+      # - name: Use Node.js 14.x
+      #   uses: actions/setup-node@v1
+      #   with:
+      #     node-version: 14.x
         
       - name: Cypress run
         uses: cypress-io/github-action@v6
@@ -20,8 +20,8 @@ jobs:
           # build: npm run build
           # start: npm start
           # browser: chrome
-          command-prefix: yarn dlx
-          start: yarn start
+          command-prefix: yarn
+          start: yarn vite
           wait-on: 'http://localhost:3000'
           browser: chrome
           headless: true
