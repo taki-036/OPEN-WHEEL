@@ -17,11 +17,11 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          # build: npm run build
-          # start: npm start
-          # browser: chrome
-          command-prefix: yarn
-          start: yarn vite
-          wait-on: 'http://localhost:3000'
+          build: npm run build
+          start: npm start
           browser: chrome
-          headless: true
+          # command-prefix: yarn
+          # start: yarn vite
+          # wait-on: 'http://localhost:3000'
+          # browser: chrome
+          # headless: true
