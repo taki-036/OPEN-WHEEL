@@ -21,7 +21,8 @@ jobs:
           # start: npm start
           # browser: chrome
           # config-file: cypress.config.js
-          
+
+          install: false
           build: npx cypress info
           
           # command-prefix: yarn
