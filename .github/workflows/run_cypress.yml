@@ -20,6 +20,7 @@ jobs:
           build: npm run build
           start: npm start
           browser: chrome
+          config-file: cypress.config.js
           # command-prefix: yarn
           # start: yarn vite
           # wait-on: 'http://localhost:3000'
