@@ -17,10 +17,13 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          build: npm run build
-          start: npm start
-          browser: chrome
-          config-file: cypress.config.js
+          # build: npm run build
+          # start: npm start
+          # browser: chrome
+          # config-file: cypress.config.js
+          
+          build: npx cypress info
+          
           # command-prefix: yarn
           # start: yarn vite
           # wait-on: 'http://localhost:3000'
