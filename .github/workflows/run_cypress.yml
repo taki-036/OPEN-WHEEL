@@ -49,3 +49,10 @@ jobs:
           start: npm start
           browser: chrome
           spec: cypress/e2e/spec.cy.js
+      - name: Cypress artifact
+        uses: actions/upload-artifact@v3
+        # add the line below to store screenshots only on failures
+        # if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
