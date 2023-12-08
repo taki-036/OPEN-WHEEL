@@ -39,10 +39,13 @@ jobs:
             "readyTimeout": 5000
           }]' > ~/.wheel/remotehost.json
       - run: cat ~/.wheel/remotehost.json
+      
       - name: Checkout
         uses: actions/checkout@v4
-      - name: install cypress report module
-        run: npm install --save-dev mochawesome mochawesome-merge mochawesome-report-generator
+        
+      # - name: install cypress report module
+      #   run: npm install --save-dev mochawesome mochawesome-merge mochawesome-report-generator
+      
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
@@ -51,13 +54,15 @@ jobs:
           start: npm start
           browser: chrome
           spec: cypress/e2e/spec.cy.js
-      - name: cypress report create html
-        if: always()
-        run: |
-          npx mochawesome-merge "cypress/mochawesome*.json" > cypress/merge-report.json
-          npx marge cypress/merge-report.json -o cypress
-      - name: Cypress artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
+          
+      # - name: cypress report create html
+      #   if: always()
+      #   run: |
+      #     npx mochawesome-merge "cypress/mochawesome*.json" > cypress/merge-report.json
+      #     npx marge cypress/merge-report.json -o cypress
+      
+      # - name: Cypress artifact
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: cypress-screenshots
+      #     path: cypress/screenshots
