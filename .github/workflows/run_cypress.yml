@@ -54,8 +54,8 @@ jobs:
       - name: cypress report create html
         if: always()
         run: |
-          npx mochawesome-merge "cypress/results/mochawesome*.json" > cypress/results/merge-report.json
-          npx marge cypress/results/merge-report.json -o cypress/results
+          npx mochawesome-merge "cypress/mochawesome*.json" > cypress/merge-report.json
+          npx marge cypress/merge-report.json -o cypress
       - name: Cypress artifact
         uses: actions/upload-artifact@v3
         with:
