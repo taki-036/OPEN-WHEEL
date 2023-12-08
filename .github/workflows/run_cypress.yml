@@ -61,8 +61,9 @@ jobs:
       #     npx mochawesome-merge "cypress/mochawesome*.json" > cypress/merge-report.json
       #     npx marge cypress/merge-report.json -o cypress
       
-      # - name: Cypress artifact
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: cypress-screenshots
-      #     path: cypress/screenshots
+      - name: Cypress artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-screenshots
+          if-no-files-found: ignore
+          path: cypress/screenshots/**
