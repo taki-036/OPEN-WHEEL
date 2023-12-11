@@ -54,7 +54,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          # working-directory: cypress/e2e
+          working-directory: e2e
           browser: chrome
           record: true
           # install: false
