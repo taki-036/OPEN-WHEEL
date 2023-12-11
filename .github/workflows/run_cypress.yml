@@ -8,5 +8,6 @@ jobs:
         uses: actions/checkout@v4
       - run: npm install cypress
       - run: npm install simple-ssh
+      - run: npm install @cypress/webpack-preprocessor
       - name: Cypress run
         uses: cypress-io/github-action@v6
