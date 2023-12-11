@@ -56,8 +56,8 @@ jobs:
           build: npm run build
           start: npm start
           command: |
-            npm install simple-ssh
-          # command: npx cypress run
+            npx cypress run
+          # command: npm install simple-ssh
           spec: cypress/e2e/spec.cy.js
           
       # - name: cypress report create html
@@ -66,9 +66,9 @@ jobs:
       #     npx mochawesome-merge "cypress/mochawesome*.json" > cypress/merge-report.json
       #     npx marge cypress/merge-report.json -o cypress
       
-      - name: Cypress artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: cypress-screenshots
+      # - name: Cypress artifact
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: cypress-screenshots
           # if-no-files-found: ignore
-          path: cypress/screenshots/**
+          # path: cypress/screenshots/**
