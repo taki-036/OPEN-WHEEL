@@ -66,7 +66,7 @@ jobs:
           #   npm run --prefix ../server/ start
           # command: npx cypress run
           spec: cypress/test/spec.cy.js
-          # build: npm run build
+          build: npm run build
           start: npm start
           # command: |
           #   npm install cypress
