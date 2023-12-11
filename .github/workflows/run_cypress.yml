@@ -43,6 +43,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+        
       # - name: install cypress report module
       #   run: npm install --save-dev mochawesome mochawesome-merge mochawesome-report-generator
       
