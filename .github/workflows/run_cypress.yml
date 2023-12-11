@@ -52,7 +52,7 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          working-directory: e2e
+          # working-directory: e2e
           browser: chrome
           # record: true
           # install: false
@@ -63,7 +63,7 @@ jobs:
           #   npm run --prefix ../client/ start
           #   npm run --prefix ../server/ start
           # command: npx cypress run
-          spec: cypress/test/spec.cy.js
+          spec: spec.cy.js
           # build: npm run build
           # start: npm start
           command: npx cypress run
