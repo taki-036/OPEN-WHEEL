@@ -58,13 +58,22 @@ jobs:
           browser: chrome
           record: true
           # install: false
-          build: npm run build
-          start: npm start
-          command: |
-            npm install cypress
-            npx cypress run
+          build: |
+            npm run --prefix ../server/ build
+            npm run --prefix ../client/ build
+          start: |
+            npm run --prefix ../client/ start
+            npm run --prefix ../server/ start
+          command: npx cypress run
+          spec: |
+            cypress/**/*cy.{js,ts}
+          # build: npm run build
+          # start: npm start
+          # command: |
+          #   npm install cypress
+          #   npx cypress run
           # command: npm install simple-ssh
-          spec: cypress/e2e/spec.cy.js
+          # spec: cypress/e2e/spec.cy.js
           
       # - name: cypress report create html
       #   if: always()
