@@ -61,14 +61,13 @@ jobs:
           # build: |
           #   npm run --prefix ../server/ build
           #   npm run --prefix ../client/ build
-          start: |
-            npm run --prefix ../client/ start
-            npm run --prefix ../server/ start
-          command: npx cypress run
-          spec: |
-            cypress/test/spec.cy.js
+          # start: |
+          #   npm run --prefix ../client/ start
+          #   npm run --prefix ../server/ start
+          # command: npx cypress run
+          spec: cypress/test/spec.cy.js
           # build: npm run build
-          # start: npm start
+          start: npm start
           # command: |
           #   npm install cypress
           #   npx cypress run
