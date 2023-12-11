@@ -49,10 +49,15 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          command: npm install simple-ssh
+          working-directory: cypress/e2e
+          browser: chrome
+          record: true
+          install: false
           build: npm run build
           start: npm start
-          browser: chrome
+          command: |
+            npm install simple-ssh
+            npx cypress run
           spec: cypress/e2e/spec.cy.js
           
       # - name: cypress report create html
