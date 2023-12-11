@@ -1,52 +1,50 @@
 name: Cypress Tests
-
-on: push
-
+on: [push]
 jobs:
-  cypress-run:
-    services:
-      testbed:
-        image: naoso5/openpbs
-        ports:
-          - 4000:22
-    env:
-      WHEEL_USE_HTTP: 1
-      WHEEL_TEST_REMOTEHOST: testServer
-      WHEEL_TEST_REMOTE_PASSWORD: passw0rd
-      TZ: JST-9
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  Cypress-Test:
+  #   services:
+  #     testbed:
+  #       image: naoso5/openpbs
+  #       ports:
+  #         - 4000:22
+  #   env:
+  #     WHEEL_USE_HTTP: 1
+  #     WHEEL_TEST_REMOTEHOST: testServer
+  #     WHEEL_TEST_REMOTE_PASSWORD: passw0rd
+  #     TZ: JST-9
+  #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [20.x]
+    # strategy:
+    #   matrix:
+    #     node-version: [20.x]
     steps:
-      - run: mkdir -p ~/.wheel
-      - run: >
-          echo '[{
-            "name": "testServer",
-            "host": "localhost",
-            "path": "/home/testuser",
-            "keyFile": null,
-            "username": "testuser",
-            "numJob": 5,
-            "port": 4000,
-            "id": "dummy-id",
-            "jobScheduler": "PBSPro",
-            "renewInterval": 0,
-            "renewDelay": 0,
-            "statusCheckInterval": 10,
-            "maxStatusCheckError": 10,
-            "readyTimeout": 5000
-          }]' > ~/.wheel/remotehost.json
-      - run: cat ~/.wheel/remotehost.json
+      # - run: mkdir -p ~/.wheel
+      # - run: >
+      #     echo '[{
+      #       "name": "testServer",
+      #       "host": "localhost",
+      #       "path": "/home/testuser",
+      #       "keyFile": null,
+      #       "username": "testuser",
+      #       "numJob": 5,
+      #       "port": 4000,
+      #       "id": "dummy-id",
+      #       "jobScheduler": "PBSPro",
+      #       "renewInterval": 0,
+      #       "renewDelay": 0,
+      #       "statusCheckInterval": 10,
+      #       "maxStatusCheckError": 10,
+      #       "readyTimeout": 5000
+      #     }]' > ~/.wheel/remotehost.json
+      # - run: cat ~/.wheel/remotehost.json
       
       - name: Checkout
         uses: actions/checkout@v4
         
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
+      # - name: Use Node.js ${{ matrix.node-version }}
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: ${{ matrix.node-version }}
         
       # - name: install cypress report module
       #   run: npm install --save-dev mochawesome mochawesome-merge mochawesome-report-generator
@@ -56,7 +54,7 @@ jobs:
         with:
           working-directory: e2e
           browser: chrome
-          record: true
+          # record: true
           # install: false
           # build: |
           #   npm run --prefix ../server/ build
