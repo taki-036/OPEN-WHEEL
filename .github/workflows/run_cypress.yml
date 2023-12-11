@@ -52,7 +52,7 @@ jobs:
           # working-directory: cypress/e2e
           browser: chrome
           record: true
-          install: false
+          # install: false
           build: npm run build
           start: npm start
           command: |
@@ -70,5 +70,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: cypress-screenshots
-          if-no-files-found: ignore
+          # if-no-files-found: ignore
           path: cypress/screenshots/**
