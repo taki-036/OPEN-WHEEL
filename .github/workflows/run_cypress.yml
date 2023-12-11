@@ -56,9 +56,9 @@ jobs:
           build: npm run build
           start: npm start
           command: |
-            npx cypress run
-          # command: npm install simple-ssh
-          # spec: cypress/e2e/spec.cy.js
+            npm install simple-ssh
+          # command: npx cypress run
+          spec: cypress/e2e/spec.cy.js
           
       # - name: cypress report create html
       #   if: always()
