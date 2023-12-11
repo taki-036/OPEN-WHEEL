@@ -57,7 +57,7 @@ jobs:
           start: npm start
           command: |
             npm install cypress
-            npx cypress run
+            npm cypress run
           # command: npm install simple-ssh
           spec: cypress/e2e/spec.cy.js
           
