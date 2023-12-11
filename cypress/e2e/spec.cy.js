@@ -23,6 +23,9 @@ describe('wheel test', () => {
     cy.taskMake('task0')
     cy.clickFilesTab()
     
+    cy.contains('button', 'Files').scrollIntoView()
+    cy.screenshot({overwrite: true })
+
     cy.contains('button', 'Files').then($el => {
       cy.softAssert($el.attr('aria-expanded'), 'true', "FilesTab is aria-expanded")
     })
