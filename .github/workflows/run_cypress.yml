@@ -58,9 +58,9 @@ jobs:
           browser: chrome
           record: true
           # install: false
-          build: |
-            npm run --prefix ../server/ build
-            npm run --prefix ../client/ build
+          # build: |
+          #   npm run --prefix ../server/ build
+          #   npm run --prefix ../client/ build
           start: |
             npm run --prefix ../client/ start
             npm run --prefix ../server/ start
