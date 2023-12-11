@@ -19,7 +19,7 @@ describe('wheel test', () => {
     cy.assertAll()
   })
 
-  it('test1', () => {
+  it.only('test1', () => {
     cy.taskMake('task0')
     cy.clickFilesTab()
     
