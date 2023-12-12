@@ -6,7 +6,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - run: npm build
+      - run: npm run build
       - run: npm start
         working-directory: server
       - run: npm install cypress
