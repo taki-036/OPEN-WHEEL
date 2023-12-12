@@ -7,7 +7,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - run: npm run build
-      - run: npm start
+      - run: npm run start
         working-directory: server
       - run: npm install cypress
         working-directory: root
