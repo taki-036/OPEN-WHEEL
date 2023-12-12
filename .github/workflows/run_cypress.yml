@@ -6,7 +6,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - run: npm build
+      - run: npm start
+        working-directory: server
       - run: npm install cypress
+        working-directory: root
       - run: npm install simple-ssh
       - run: npm install @cypress/webpack-preprocessor
       - run: npm install cypress-delete-downloads-folder
