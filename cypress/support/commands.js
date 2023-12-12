@@ -1,12 +1,3 @@
-import addContext from 'mochawesome/addContext';
-
-Cypress.on('test:after:run', (test, runnable) => {
-  if (test.state === 'failed') {
-    addContext({ test }, '../screenshots');
-  }
-  addContext({ test }, '../videos');
-});
-
 Cypress.on('uncaught:exception', (err, runnable) => {
     return false
 })
