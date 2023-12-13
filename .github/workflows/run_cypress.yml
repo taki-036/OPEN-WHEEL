@@ -46,6 +46,7 @@ jobs:
       - run: npm install mochawesome
       - run: npm install mochawesome-merge 
       - run: npm install mochawesome-report-generator
+      - run: npm install cypress-mochawesome-reporter
         
       - name: Cypress run
         uses: cypress-io/github-action@v6
