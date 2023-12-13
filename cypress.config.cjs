@@ -4,6 +4,13 @@ const webpackPreprocessor = require('@cypress/webpack-preprocessor')
 const { removeDirectory } = require('cypress-delete-downloads-folder');
 
 module.exports = defineConfig({
+  reporter: "mochawesome",
+  reporterOptions: {
+    reportDir: "cypress",
+    overwrite: false,
+    html: false,
+    json: true
+  },
   requestTimeout: 10000,
   defaultCommandTimeout: 10000,
   component: {
