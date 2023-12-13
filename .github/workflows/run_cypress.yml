@@ -43,9 +43,19 @@ jobs:
       - run: npm install simple-ssh
       - run: npm install @cypress/webpack-preprocessor
       - run: npm install cypress-delete-downloads-folder
+      - run: npm install mochawesome
+      - run: npm install mochawesome-merge 
+      - run: npm install mochawesome-report-generator
+        
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
           build: npm run build
           start: npm start
           browser: chrome
+      - run: npx mochawesome-merge "cypress/mochawesome*.json" > cypress/merge-report.json
+      - run: npx marge cypress/merge-report.json -o cypress
+      - uses: actions/upload-artifact@v2
+        with:
+          name: mochawesome-report
+          path: ./cypress
