@@ -14,6 +14,8 @@ module.exports = defineConfig({
     html: false,
     json: true
   },
+  "screenshotsFolder": "cypress/screenshots",
+  "videosFolder": "cypress/videos",
   requestTimeout: 10000,
   defaultCommandTimeout: 10000,
   component: {
