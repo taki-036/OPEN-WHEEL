@@ -15,63 +15,17 @@
 /**
  * @type {Cypress.PluginConfig}
  */
-// eslint-disable-next-line no-unused-vars
-// module.exports = (on, config) => {
-//   // `on` is used to hook into various events Cypress emits
-//   // `config` is the resolved Cypress config
-//   on('task', {
-//     log(message) {
-//       console.log(message)
+// CypressによるE2Eテストが実施される前に読み込まれるファイル
+import addContext from 'mochawesome/addContext'
 
-//       return null
-//     },
-//   })
-// }
-
-// module.exports = (on, config) => {
-//   on('task', {
-//     saveDataToDatabase(data) {
-//       // nodeのコードをここに書きます。
-//      // たとえば、nodeで行うdatabaseの書き込みだったり、など実行できます。
-//       console.log(data)
-//       return null // returnを返さないと怒られます。
-//     },
-//   })
-// }
-
-// install the simple-ssh node package and import it
-// const SSH = require('simple-ssh')
-// module.exports = (on, config) => {
-
-// // add a task called sshExecuteCmd
-//   on("task", {
-//     sshExecuteCmd: ({ sshconn, command }) => {
-//       return new Promise((resolve, reject) => {
-//         let ssh = new SSH(sshconn)
-
-//         ssh
-//           .exec(command, {
-//             out: function (stdout) {
-//               console.log("stdout: " + stdout)
-//               resolve(stdout)
-//             },
-//             err: function (stderr) {
-//               console.log("stderr: " + stderr)
-//               resolve(stderr)
-//             },
-//           })
-//           .start()
-//       })
-//     }
-//   })
-// }
-
-// module.exports = (on, config) => {
-//   on('task', {
-//     log(message) {
-//       console.log(message)
-
-//       return null
-//     },
-//   })
-// }
+Cypress.on('test:after:run', (test, runnable) => {
+  if (test.state === 'failed') {
+    addContext(
+      { test },
+      `./screenshots/${location.pathname.replace(/(.*)\//, '')}/${runnable.parent.title} -- ${
+        test.title
+      } (failed).png`
+    )
+  }
+  addContext({ test }, `./videos/${location.pathname.replace(/(.*)\//, '')}.mp4`)
+})
