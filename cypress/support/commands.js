@@ -5,12 +5,12 @@ Cypress.on('test:after:run', (test, runnable) => {
   if (test.state === 'failed') {
     addContext(
       { test },
-      `./screenshots/${location.pathname.replace(/(.*)\//, '')}/${runnable.parent.title} -- ${
+      `./${location.pathname.replace(/(.*)\//, '')}/${runnable.parent.title} -- ${
         test.title
       } (failed).png`
     )
   }
-  addContext({ test }, `./videos/${location.pathname.replace(/(.*)\//, '')}.mp4`)
+  addContext({ test }, `./${location.pathname.replace(/(.*)\//, '')}.mp4`)
 })
 
 Cypress.on('uncaught:exception', (err, runnable) => {
