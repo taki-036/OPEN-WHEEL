@@ -21,7 +21,7 @@ module.exports = defineConfig({
   },
 
   e2e: {
-    // numTestsKeptInMemory: 50,
+    numTestsKeptInMemory: 50,
     baseUrl: `http://localhost:8089`,
     setupNodeEvents(on, config) {
       on('task', {
