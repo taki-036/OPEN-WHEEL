@@ -7,13 +7,13 @@ module.exports = defineConfig({
   // pluginsFile: false,
   // modifyObstructiveCode: false,
   // experimentalStudio: true,
-  reporter: 'cypress-mochawesome-reporter',
-  // reporter: "mochawesome",
-  // reporterOptions: {
-  //   reportDir: "cypress",
-  //   overwrite: false,
-  //   html: false,
-  //   json: true
+  // reporter: 'cypress-mochawesome-reporter',
+  reporter: "mochawesome",
+  reporterOptions: {
+    reportDir: "cypress",
+    overwrite: false,
+    html: false,
+    json: true
   },
   // "screenshotsFolder": "cypress/screenshots",
   // "videosFolder": "cypress/videos",
