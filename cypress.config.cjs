@@ -8,8 +8,8 @@ module.exports = defineConfig({
   reporterOptions: {
     reportDir: "cypress",
     overwrite: false,
-    html: false,
-    json: true
+    // html: false,
+    // json: true
   },
   requestTimeout: 10000,
   defaultCommandTimeout: 10000,
@@ -21,7 +21,7 @@ module.exports = defineConfig({
   },
 
   e2e: {
-    numTestsKeptInMemory: 50,
+    // numTestsKeptInMemory: 50,
     baseUrl: `http://localhost:8089`,
     setupNodeEvents(on, config) {
       on('task', {
