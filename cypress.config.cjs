@@ -8,8 +8,8 @@ module.exports = defineConfig({
   reporterOptions: {
     reportDir: "cypress",
     overwrite: false,
-    // html: false,
-    // json: true
+    html: false,
+    json: true
   },
   requestTimeout: 10000,
   defaultCommandTimeout: 10000,
