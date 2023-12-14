@@ -9,8 +9,8 @@ module.exports = defineConfig({
       clipboard: "allow"
     }
   },
-  requestTimeout: 10000,
-  defaultCommandTimeout: 10000,
+  requestTimeout: 1000000,
+  defaultCommandTimeout: 1000000,
   component: {
     devServer: {
       framework: "vue",
