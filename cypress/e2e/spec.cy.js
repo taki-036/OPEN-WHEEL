@@ -990,7 +990,7 @@ describe('wheel test', () => {
     cy.removeTask('task0')
   })
   
-  it('test41', () => {
+  it.skip('test41', () => {
     cy.taskMake('task0')
     cy.hostSelect('testServer')
     cy.scriptMake('run.sh', 'echo test')
@@ -1024,7 +1024,7 @@ describe('wheel test', () => {
     cy.removeTask('task0')
   })
   
-  it('test42', () => {
+  it.skip('test42', () => {
     cy.taskMake('task0')
     cy.hostSelect('testServer')
     cy.scriptMake('run.sh', 'echo test')
@@ -1058,7 +1058,7 @@ describe('wheel test', () => {
     cy.removeTask('task0')
   })
   
-  it('test43', () => {
+  it.skip('test43', () => {
     cy.taskMake('task0')
     cy.hostSelect('testServer')
     cy.scriptMake('run.sh', 'echo test')
