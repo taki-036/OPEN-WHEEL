@@ -3,7 +3,7 @@ const SSH = require('simple-ssh')
 const webpackPreprocessor = require('@cypress/webpack-preprocessor')
 const { removeDirectory } = require('cypress-delete-downloads-folder');
 
-module.exports = defineConfig(
+module.exports = defineConfig({
   env: {
     browserPermissions: {
       clipboard: "allow"
