@@ -410,7 +410,7 @@ cy.contains('button', 'ok').click()
 
 // send command
 Cypress.Commands.add("sendCommand", () => {
-const configObj = {host:'localhost', port:4000, user:'testuser', pass:'passW0rd'}
+const configObj = {host:'localhost', port:4000, user:'testuser', pass:'passw0rd'}
 cy.task("sshExecuteCmd",{
   sshconn: configObj,
   command:'dirs=`ls -tF ~/testuser | grep / | head -1`; ary=(${dirs}); ls -t testuser/${ary[0]} | grep -v / | wc -l;'
