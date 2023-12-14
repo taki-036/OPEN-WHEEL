@@ -4,7 +4,7 @@ describe('wheel test', () => {
   before(() => {
     cy.visit('/')
     // cy.viewport(1024, 768)
-    cy.projectMake(testProject)
+    cy.projectMake(testProject).wait(500)
   })
 
   beforeEach(() => {
