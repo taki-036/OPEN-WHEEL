@@ -4,7 +4,7 @@ const webpackPreprocessor = require('@cypress/webpack-preprocessor')
 const { removeDirectory } = require('cypress-delete-downloads-folder');
 
 module.exports = defineConfig(
-  requestTimeout: 10000,
+  // requestTimeout: 10000,
   defaultCommandTimeout: 10000,
   component: {
     devServer: {
