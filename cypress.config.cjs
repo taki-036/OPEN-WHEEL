@@ -8,12 +8,12 @@ module.exports = defineConfig({
   // modifyObstructiveCode: false,
   // experimentalStudio: true,
   // reporter: 'cypress-mochawesome-reporter',
-  reporter: "mochawesome",
-  reporterOptions: {
-    reportDir: "cypress",
-    overwrite: false,
-    html: false,
-    json: true
+  // reporter: "mochawesome",
+  // reporterOptions: {
+  //   reportDir: "cypress",
+  //   overwrite: false,
+  //   html: false,
+  //   json: true
   },
   // "screenshotsFolder": "cypress/screenshots",
   // "videosFolder": "cypress/videos",
@@ -27,7 +27,7 @@ module.exports = defineConfig({
   },
 
   e2e: {
-    numTestsKeptInMemory: 50,
+    numTestsKeptInMemory: 1,
     baseUrl: `http://localhost:8089`,
     setupNodeEvents(on, config) {
       on('before:run', async (details) => {
