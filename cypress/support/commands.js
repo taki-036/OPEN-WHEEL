@@ -66,6 +66,7 @@ cy.get('#task')
 
 // click Task
 Cypress.Commands.add("clickTask", (taskName) => {
+cy.wait(300)
 cy.get('svg').contains(taskName).click().wait(200)
 })
 
