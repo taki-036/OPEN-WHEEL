@@ -248,8 +248,10 @@ if (k == 0) {
 Cypress.Commands.add("projectRemove", (projectName) => { 
 cy.visit('/')
 cy.contains(projectName).parent().siblings().first().click()
-cy.get('[type="button"]').contains('REMOVE').click().wait(300)
-cy.get('[type="button"]').contains('remove').click()
+cy.get('[type="button"]').contains('REMOVE').as('REMOVE_button')
+cy.get('@REMOVE_button').click()
+cy.get('[type="button"]').contains('remove').as('remove_button')
+cy.get('@remove_button').click()
 })
 
 // reload Task
