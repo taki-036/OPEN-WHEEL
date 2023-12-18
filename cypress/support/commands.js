@@ -415,7 +415,7 @@ const configObj = {host:'localhost', port:4000, user:'testuser', pass:'passw0rd'
 // const configObj = {host:'localhost', port:22, user:'nagawa', pass:'unix683010'}
 cy.task("sshExecuteCmd",{
   sshconn: configObj,
-  command:'ls -a'
-  // command:'dirs=`ls -tF ~/testuser | grep / | head -1`; ary=(${dirs}); ls -t testuser/${ary[0]} | grep -v / | wc -l;'
+  // command:'ls -a'
+  command:'dirs=`ls -tF ~/testuser | grep / | head -1`; ary=(${dirs}); ls -t testuser/${ary[0]} | grep -v / | wc -l;'
 })
 })
