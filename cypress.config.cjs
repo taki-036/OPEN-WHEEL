@@ -21,6 +21,7 @@ module.exports = defineConfig({
   e2e: {
     numTestsKeptInMemory: 1,
     baseUrl: `http://localhost:8089`,
+    screenshotsFolder: "screenshots",
     setupNodeEvents(on, config) {
       on('task', {
         removeDirectory,
