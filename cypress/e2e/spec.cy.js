@@ -707,7 +707,11 @@ describe('wheel test', () => {
 
     cy.execProject()
     cy.passwordType(password)
-    cy.outputSshOpen(6000)
+    cy.clickConsole()
+    cy.clickOutputSshTab()
+    cy.get('.v-window-item.v-window-item--active').find('.xterm-rows').children().should(($el) => {
+      expect($el.eq(2).text()).to.match(/test/)
+    })
     
     cy.viewport('macbook-16')
     cy.screenshot('test32: script repeat 3 times at Console(Stdout)', {overwrite: true, capture: 'runner'})
