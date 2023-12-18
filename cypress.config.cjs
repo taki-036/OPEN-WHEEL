@@ -4,7 +4,7 @@ const webpackPreprocessor = require('@cypress/webpack-preprocessor')
 const { removeDirectory } = require('cypress-delete-downloads-folder');
 
 module.exports = defineConfig({
-  projectId: "wheel_autotest"
+  projectId: "wheel_autotest",
   env: {
     browserPermissions: {
       clipboard: "allow"
