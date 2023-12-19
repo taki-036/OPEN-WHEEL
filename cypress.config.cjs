@@ -6,7 +6,7 @@ const { removeDirectory } = require('cypress-delete-downloads-folder');
 module.exports = defineConfig({
   projectId: "4jprfr",
   env: {
-    RECORD_KEY: "c9eabe66-818d-470f-a4a8-5c33b028f1b3",
+    CYPRESS_RECORD_KEY: "c9eabe66-818d-470f-a4a8-5c33b028f1b3",
     browserPermissions: {
       clipboard: "allow"
     }
