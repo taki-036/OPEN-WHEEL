@@ -50,9 +50,9 @@ jobs:
           build: npm run build
           start: npm start
           browser: chrome
-          # record: true
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          CYPRESS_PROJECT_ID: ${{ secrets.PROJECT_ID }}
+          record: true
+          CYPRESS_RECORD_KEY: 4jprfr
+          CYPRESS_PROJECT_ID: c9eabe66-818d-470f-a4a8-5c33b028f1b3
       - uses: actions/upload-artifact@v3
         with:
           path: cypress/screenshots
