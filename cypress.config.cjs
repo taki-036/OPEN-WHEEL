@@ -4,7 +4,7 @@ const webpackPreprocessor = require('@cypress/webpack-preprocessor')
 const { removeDirectory } = require('cypress-delete-downloads-folder');
 
 module.exports = defineConfig({
-  projectId: "4jprfr",
+  waitForAnimations: true,
   requestTimeout: 50000,
   defaultCommandTimeout: 50000,
   component: {
@@ -16,7 +16,6 @@ module.exports = defineConfig({
 
   e2e: {
     env: {
-      CYPRESS_RECORD_KEY: "c9eabe66-818d-470f-a4a8-5c33b028f1b3",
       browserPermissions: {
         clipboard: "allow"
       }
