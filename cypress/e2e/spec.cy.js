@@ -20,7 +20,7 @@ describe('wheel test', () => {
     cy.assertAll()
   })
 
-  it('test1', () => {
+  it.only('test1', () => {
     cy.taskMake('task0')
     cy.clickFilesTab().wait(100)
 
@@ -34,7 +34,7 @@ describe('wheel test', () => {
     cy.removeTask('task0')
   })
 
-  it('test3', () => {
+  it.only('test3', () => {
     cy.taskMake('task0')
     cy.clickFilesTab()
 
@@ -52,7 +52,7 @@ describe('wheel test', () => {
     cy.removeTask('task0')
   })
 
-  it('test4', () => {
+  it.only('test4', () => {
     cy.taskMake('task0')
     cy.clickFilesTab()
 
@@ -72,7 +72,7 @@ describe('wheel test', () => {
     cy.removeTask('task0')
   })
 
-  it('test5', () => {
+  it.only('test5', () => {
     cy.taskMake('task0')
     cy.clickFilesTab()
 
@@ -92,7 +92,7 @@ describe('wheel test', () => {
     cy.removeTask('task0')
   })
 
-  it('test6', () => {
+  it.only('test6', () => {
     cy.taskMake('task0')
     cy.clickFilesTab()
 
