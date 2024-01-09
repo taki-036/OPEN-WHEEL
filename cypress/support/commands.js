@@ -57,28 +57,58 @@ cy.wrap(Cypress.automation('remote:debugger:protocol', {
 }))
 })
 
+Cypress.Commands.add("projectMake", (projectName) => { 
+  cy.contains('button', 'NEW').click()
+  cy.contains('label', 'project name').siblings().children('input').type(projectName, {force: true})
+  cy.contains('button', 'create').click()
+})
+
+Cypress.Commands.add("projectOpen", (projectName) => {
+  cy.visit('/').then(() => {
+    cy.get('main').find('table')
+  })
+  cy.contains('tr', projectName).find('[type="checkbox"]').click({force: true})
+  cy.contains('button', 'OPEN').click({force: true})
+})
+
+Cypress.Commands.add("projectRemove", (projectName) => { 
+  cy.contains('tr', projectName).find('[type="checkbox"]').click({force: true})
+  cy.contains('button', 'REMOVE').click()
+  cy.contains('button', 'remove').click()
+})
+
+// make Task
+Cypress.Commands.add("taskMake", (taskName) => {
+  cy.dragAndDropTask(300, 500, taskName).then(() => {
+    cy.clickTask(taskName)
+  })
+})
+
 // drag&drop task
-Cypress.Commands.add("dragAndDropTask", (x, y) => {
-cy.get('#task')
+Cypress.Commands.add("dragAndDropTask", (x, y, taskName) => {
+  cy.wait(1000)
+  cy.get('#task')
   .trigger("dragstart", { offsetX: 100, offsetY: 100 })
-  .trigger('dragend', { clientX: x, clientY: y })
+  .trigger('dragend', { clientX: x, clientY: y }).then(() => {
+    cy.get('svg').contains(taskName)
+  })
 })
 
 // click Task
 Cypress.Commands.add("clickTask", (taskName) => {
-cy.wait(300)
-cy.get('svg').contains(taskName).click().wait(200)
+  cy.get('svg').contains(taskName).click()
+})
+
+// remove Task
+Cypress.Commands.add("removeTask", (taskName) => {
+  cy.contains('header', 'name').find('button').eq(2).click().then(() => {
+    cy.get('svg').contains(taskName).should('not.exist')
+  })
 })
 
 // close Task
 Cypress.Commands.add("closeTask", () => {
 cy.get('.v-toolbar-items').find('[type="button"]').eq(0).click()
-})
-
-// remove Task
-Cypress.Commands.add("removeTask", (taskName) => {
-cy.get('.v-toolbar-items').children().last().click().wait(200)
-
 })
 
 // click input/output files tab
@@ -219,20 +249,7 @@ cy.contains('span', 'output(SSH)').click()
 
 // click file/folder
 Cypress.Commands.add("clickFileFolder", (name) => {
-cy.get('.v-list-item__content').contains(name).click()
-})
-
-// make project
-Cypress.Commands.add("projectMake", (projectName) => { 
-cy.get('[type="button"]').contains('NEW').click()
-cy.contains('project name').siblings().children('input').type(projectName)
-cy.get('[type="button"]').contains('create').click()
-})
-
-// open project
-Cypress.Commands.add("projectOpen", (projectName) => { 
-cy.contains(projectName).parent().siblings().first().click()
-cy.get('[type="button"]').contains('OPEN').click()
+  cy.contains('button', 'Files').siblings().contains(name).click()
 })
 
 // reload project
@@ -244,29 +261,12 @@ if (k == 0) {
 }
 })
 
-// delete project
-Cypress.Commands.add("projectRemove", (projectName) => { 
-cy.visit('/')
-cy.contains(projectName).parent().siblings().first().click()
-cy.get('[type="button"]').contains('REMOVE').as('REMOVE_button')
-cy.get('@REMOVE_button').click()
-cy.get('[type="button"]').contains('remove').as('remove_button')
-cy.get('@remove_button').click()
-})
-
 // reload Task
 Cypress.Commands.add("taskReload", (taskName) => {
 cy.closeTask()
 cy.clickTask(taskName)
 // cy.get('.v-toolbar-items').children().eq(1).click().wait(100)
 // cy.get('svg').contains(taskName).click()
-})
-
-// make Task
-Cypress.Commands.add("taskMake", (taskName) => {
-  cy.dragAndDropTask(300, 500).then(() => {
-    cy.clickTask(taskName)
-  })
 })
 
 // swicth use job scheduler
@@ -333,7 +333,7 @@ cy.selectListBox(scriptName)
 // make script
 Cypress.Commands.add("scriptMake", (scriptName, script) => {
 cy.clickFilesTab()
-cy.fileMake(scriptName)
+cy.fileFolderMake('file', scriptName)
 
 cy.scriptEdit(scriptName, script)
 })
@@ -383,11 +383,16 @@ cy.openHostListBox(hostName)
 cy.selectHost(hostName).wait(200)
 })
 
-// make file
-Cypress.Commands.add("fileMake", (fileName) => {
-cy.contains('button', 'Files').next().find('button').eq(1).click()
-cy.contains('label', 'new file name').siblings().find('input').type(fileName)
-cy.contains('button', 'ok').click()
+// make file/folder
+Cypress.Commands.add("fileFolderMake", (type, name) => {
+  if(type == 'file') {
+    cy.contains('button', 'Files').next().find('button').eq(1).click()
+    cy.contains('label', 'new file name').siblings().find('input').type(name)
+  } else if(type == 'folder') {
+    cy.contains('button', 'Files').next().find('button').eq(0).click()
+    cy.contains('label', 'new directory name').siblings().find('input').type(name)
+  }
+  cy.contains('button', 'ok').click()
 })
 
 // make folder
