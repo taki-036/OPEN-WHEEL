@@ -3,16 +3,16 @@ describe('wheel test', () => {
   const password = 'passw0rd'
   before(() => {
     cy.visit('/')
-    // cy.viewport(1024, 768)
-    cy.projectMake(testProject).wait(500)
+    cy.projectMake(testProject)
   })
 
   beforeEach(() => {
-    cy.visit('/')
-    cy.projectOpen(testProject).wait(500)
+    cy.projectOpen(testProject)
+    cy.viewport('macbook-16')
   })
 
   afterEach(() => {
+    cy.visit('/')
   })
 
   after(() => {
@@ -20,64 +20,64 @@ describe('wheel test', () => {
     cy.assertAll()
   })
 
-  it.only('test1', () => {
+  it('test1', () => {
     cy.taskMake('task0')
     cy.clickFilesTab()
-
-    cy.contains('button', 'Files').focus().scrollIntoView()
-    cy.screenshot('test1: FilesTab is aria-expanded', {overwrite: true, capture: 'fullPage'})
 
     cy.contains('button', 'Files').then($el => {
       cy.softAssert($el.attr('aria-expanded'), 'true', "FilesTab is aria-expanded")
     })
 
+    cy.contains('button', 'Files').focus().scrollIntoView({easing: 'linear', duration: 100})
+    cy.screenshot('test1', {overwrite: true, capture: 'runner'})
+
     cy.removeTask('task0')
   })
 
-  it.only('test3', () => {
+  it('test3', () => {
     cy.taskMake('task0')
     cy.clickFilesTab()
 
-    cy.folderMake('folder1')
-    cy.fileMake('file1')
-
-    cy.contains('button', 'Files').scrollIntoView()
-    cy.screenshot('test3: File,Folder is exist', {overwrite: true, capture: 'fullPage'})
+    cy.fileFolderMake('folder', 'folder1')
+    cy.fileFolderMake('file', 'file1')
 
     cy.contains('button', 'Files').next().find('[role="listbox"]').eq(0).children().then($el => {
       cy.softAssert($el.eq(0).text(), 'folder1', "Folder is exist")
       cy.softAssert($el.eq(1).text(), 'file1', "File is exist")
     })
 
+    cy.contains('button', 'Files').focus().scrollIntoView({easing: 'linear', duration: 100})
+    cy.screenshot('test3', {overwrite: true, capture: 'runner'})
+
     cy.removeTask('task0')
   })
 
-  it.only('test4', () => {
+  it('test4', () => {
     cy.taskMake('task0')
     cy.clickFilesTab()
 
-    cy.folderMake('folder1')
+    cy.fileFolderMake('folder', 'folder1')
     cy.clickFileFolder('folder1')
-    cy.folderMake('folder2')
-    cy.fileMake('file1')
+    cy.fileFolderMake('folder', 'folder2')
+    cy.fileFolderMake('file', 'file1')
 
-    cy.contains('button', 'Files').scrollIntoView()
-    cy.screenshot('test4: File,Folder is exist in folder1', {overwrite: true, capture: 'fullPage'})
-
-    cy.contains('button', 'Files').next().contains('folder1').parent().next().find('[role="listbox"]').eq(0).children().then($el => {
+    cy.contains('button', 'Files').next().contains('folder1').parent().next().children().then($el => {
       cy.softAssert($el.eq(0).text(), 'folder2', 'folder2 is exist in folder1')
       cy.softAssert($el.eq(1).text(), 'file1', 'file1 is exist in folder1')
     })
 
+    cy.contains('button', 'Files').focus().scrollIntoView({easing: 'linear', duration: 100})
+    cy.screenshot('test4', {overwrite: true, capture: 'runner'})
+
     cy.removeTask('task0')
   })
 
-  it.only('test5', () => {
+  it('test5', () => {
     cy.taskMake('task0')
     cy.clickFilesTab()
 
-    cy.folderMake('folder1')
-    cy.fileMake('file1')
+    cy.fileFolderMake('folder', 'folder1')
+    cy.fileFolderMake('file', 'file1')
     cy.fileFolderRename('folder1', 'folder2')
     cy.fileFolderRename('file1', 'file2')
 
@@ -92,11 +92,11 @@ describe('wheel test', () => {
     cy.removeTask('task0')
   })
 
-  it.only('test6', () => {
+  it('test6', () => {
     cy.taskMake('task0')
     cy.clickFilesTab()
 
-    cy.folderMake('folder1')
+    cy.fileFolderMake('folder', 'folder1')
     cy.fileFolderDelete('folder1')
 
     cy.contains('button', 'Files').scrollIntoView()
@@ -141,6 +141,7 @@ describe('wheel test', () => {
     cy.clickFilesTab(6)
     cy.setClipboardPermission()
     cy.contains('copy file path').next().find('button').click()
+    cy.contains('[type="button"]', 'ok').click()
 
     cy.contains('button', 'Files').scrollIntoView()
     cy.screenshot('test10: script path is copied at clipboard', {overwrite: true, capture: 'fullPage'})
@@ -149,7 +150,6 @@ describe('wheel test', () => {
       cy.softAssert($el, '/root/test.wheel/task0/a.txt', 'script path is copied at clipboard')
     })
 
-    cy.contains('[type="button"]', 'ok').click()
     cy.removeTask('task0')
   })
 
@@ -157,9 +157,9 @@ describe('wheel test', () => {
     cy.taskMake('task0')
     cy.clickFilesTab()
 
-    cy.folderMake('folder1')
+    cy.fileFolderMake('folder', 'folder1')
     cy.clickFileFolder('folder1')
-    cy.fileMake('file1')
+    cy.fileFolderMake('file', 'file1')
     cy.clickFileFolder('folder1')
     cy.clickFileFolder('folder1').wait(100)
 
@@ -177,9 +177,9 @@ describe('wheel test', () => {
     cy.taskMake('task0')
     cy.clickFilesTab()
 
-    cy.fileMake('file1')
-    cy.fileMake('file2')
-    cy.fileMake('file3')
+    cy.fileFolderMake('file', 'file1')
+    cy.fileFolderMake('file', 'file2')
+    cy.fileFolderMake('file', 'file3')
 
     cy.clickFilesTab().wait(300)
     cy.clickFilesTab().wait(100)
@@ -198,9 +198,9 @@ describe('wheel test', () => {
     cy.taskMake('task0')
     cy.clickFilesTab()
 
-    cy.fileMake('file1')
-    cy.fileMake('file2')
-    cy.fileMake('file3')
+    cy.fileFolderMake('file', 'file1')
+    cy.fileFolderMake('file', 'file2')
+    cy.fileFolderMake('file', 'file3')
 
     cy.clickFilesTab().wait(300)
     cy.clickFilesTab()
@@ -210,7 +210,7 @@ describe('wheel test', () => {
     cy.contains('button', 'Files').focus().scrollIntoView()
     cy.screenshot('test13: file1,2,3 is exist in file*', {overwrite: true, capture: 'viewport'})
 
-    cy.contains('button', 'Files').next().find('[role="group"]').children().children().then($el => {
+    cy.contains('button', 'Files').next().find('[role="group"]').children().then($el => {
       cy.softAssert($el.eq(0).text(), 'file1', 'file1 is exist in file*')
       cy.softAssert($el.eq(1).text(), 'file2', 'file2 is exist in file*')
       cy.softAssert($el.eq(2).text(), 'file3', 'file3 is exist in file*')
@@ -223,9 +223,9 @@ describe('wheel test', () => {
     cy.taskMake('task0')
     cy.clickFilesTab()
 
-    cy.folderMake('folder1')
-    cy.folderMake('folder2')
-    cy.folderMake('folder3')
+    cy.fileFolderMake('folder', 'folder1')
+    cy.fileFolderMake('folder', 'folder2')
+    cy.fileFolderMake('folder', 'folder3')
     
     cy.clickFilesTab().wait(300)
     cy.clickFilesTab().wait(100)
@@ -244,9 +244,9 @@ describe('wheel test', () => {
     cy.taskMake('task0')
     cy.clickFilesTab()
 
-    cy.folderMake('folder1')
-    cy.folderMake('folder2')
-    cy.folderMake('folder3')
+    cy.fileFolderMake('folder', 'folder1')
+    cy.fileFolderMake('folder', 'folder2')
+    cy.fileFolderMake('folder', 'folder3')
     
     cy.clickFilesTab().wait(300)
     cy.clickFilesTab()
@@ -373,7 +373,7 @@ describe('wheel test', () => {
     cy.taskMake('task0')
     cy.clickInputOutputFilesTab()
     cy.addOutputFiles('output')
-    cy.dragAndDropTask(300, 600).wait(200)
+    cy.dragAndDropTask(300, 600, 'task1')
     cy.closeTask()
     cy.get('svg').find('polygon').eq(0)
       .trigger("mousedown", { screenX: 272, screenY: 272 })
@@ -407,7 +407,7 @@ describe('wheel test', () => {
     cy.addOutputFiles('output')
     cy.closeTask()
 
-    cy.dragAndDropTask(300, 600).wait(200)
+    cy.dragAndDropTask(300, 600, 'task1')
     cy.clickTask('task1')
     cy.clickInputOutputFilesTab()
     cy.addInputFiles('output')
@@ -438,7 +438,7 @@ describe('wheel test', () => {
     cy.addOutputFiles('result_*.dat')
     cy.closeTask()
 
-    cy.dragAndDropTask(300, 600).wait(200)
+    cy.dragAndDropTask(300, 600, 'task1')
     cy.clickTask('task1')
     cy.clickInputOutputFilesTab()
     cy.addInputFiles('results')
@@ -469,7 +469,7 @@ describe('wheel test', () => {
     cy.addOutputFiles('result_1.dat')
     cy.closeTask()
 
-    cy.dragAndDropTask(300, 600).wait(200)
+    cy.dragAndDropTask(300, 600, 'task1')
     cy.clickTask('task1')
     cy.clickInputOutputFilesTab()
     cy.addInputFiles('results/')
@@ -706,7 +706,7 @@ describe('wheel test', () => {
     })
 
     cy.execProject()
-    cy.passwordType(password)
+    cy.passwordType(password).wait(5000)
     cy.clickConsole()
     cy.clickOutputSshTab()
     cy.get('.v-window-item.v-window-item--active').find('.xterm-rows').children().should(($el) => {
