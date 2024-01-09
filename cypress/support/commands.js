@@ -264,8 +264,9 @@ cy.clickTask(taskName)
 
 // make Task
 Cypress.Commands.add("taskMake", (taskName) => {
-cy.dragAndDropTask(300, 500).wait(1000)
-cy.clickTask(taskName)
+  cy.dragAndDropTask(300, 500).then(() => {
+    cy.clickTask(taskName)
+  })
 })
 
 // swicth use job scheduler
