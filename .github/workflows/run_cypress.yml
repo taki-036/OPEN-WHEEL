@@ -30,6 +30,7 @@ jobs:
             "port": 4000,
             "id": "dummy-id",
             "jobScheduler": "PBSPro",
+            "queue": "workq",
             "renewInterval": 0,
             "renewDelay": 0,
             "statusCheckInterval": 10,
