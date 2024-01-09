@@ -65,7 +65,7 @@ Cypress.Commands.add("projectMake", (projectName) => {
 
 Cypress.Commands.add("projectOpen", (projectName) => {
   cy.visit('/').then(() => {
-    cy.get('main').find('table')
+    cy.get('.v-main').find('table')
   })
   cy.contains('tr', projectName).find('[type="checkbox"]').click({force: true})
   cy.contains('button', 'OPEN').click({force: true})
