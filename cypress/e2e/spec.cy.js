@@ -20,9 +20,9 @@ describe('wheel test', () => {
     cy.assertAll()
   })
 
-  it.only('test1', () => {
+  it('test1', () => {
     cy.taskMake('task0')
-    cy.clickFilesTab().wait(100)
+    cy.clickFilesTab()
 
     cy.contains('button', 'Files').focus().scrollIntoView()
     cy.screenshot('test1: FilesTab is aria-expanded', {overwrite: true, capture: 'fullPage'})
@@ -34,7 +34,7 @@ describe('wheel test', () => {
     cy.removeTask('task0')
   })
 
-  it.only('test3', () => {
+  it('test3', () => {
     cy.taskMake('task0')
     cy.clickFilesTab()
 
@@ -52,7 +52,7 @@ describe('wheel test', () => {
     cy.removeTask('task0')
   })
 
-  it.only('test4', () => {
+  it('test4', () => {
     cy.taskMake('task0')
     cy.clickFilesTab()
 
@@ -72,7 +72,7 @@ describe('wheel test', () => {
     cy.removeTask('task0')
   })
 
-  it.only('test5', () => {
+  it('test5', () => {
     cy.taskMake('task0')
     cy.clickFilesTab()
 
@@ -92,7 +92,7 @@ describe('wheel test', () => {
     cy.removeTask('task0')
   })
 
-  it.only('test6', () => {
+  it('test6', () => {
     cy.taskMake('task0')
     cy.clickFilesTab()
 
