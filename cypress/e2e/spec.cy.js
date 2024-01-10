@@ -161,7 +161,7 @@ describe('wheel test', () => {
 
     cy.window().its('navigator.clipboard').then((clip) => clip.readText()).then($el => {
       // cy.softAssert($el, '/root/test.wheel/task0/a.txt', 'script path is copied at clipboard')
-      cy.softAssert($el, '/home/runner/test.wheel/task0/a.txt'', 'script path is copied at clipboard')
+      cy.softAssert($el, '/home/runner/test.wheel/task0/a.txt', 'script path is copied at clipboard')
     })
 
     cy.removeTask('task0')
