@@ -1,5 +1,7 @@
 name: Cypress Tests
-on: push
+on: 
+  push:
+    branches: ["autotest"]
 jobs:
   cypress-run:
     services:
@@ -51,10 +53,4 @@ jobs:
           build: npm run build
           start: npm start
           browser: chrome
-          # record: true
-          # CYPRESS_PROJECT_ID: "4jprfr"
-          # CYPRESS_RECORD_KEY: "c9eabe66-818d-470f-a4a8-5c33b028f1b3"
-      - uses: actions/upload-artifact@v3
-        with:
-          path: cypress/screenshots
-      - uses: actions/download-artifact@v3
+          config-file: cypress/cypress.config.cjs
