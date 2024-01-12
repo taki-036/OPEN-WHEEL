@@ -58,9 +58,9 @@ cy.wrap(Cypress.automation('remote:debugger:protocol', {
 })
 
 Cypress.Commands.add("projectMake", (projectName) => { 
-  cy.contains('button', 'NEW').click()
+  cy.contains('button', 'NEW').click({force: true})
   cy.contains('label', 'project name').siblings().children('input').type(projectName, {force: true})
-  cy.contains('button', 'create').click()
+  cy.contains('button', 'create').click({force: true})
 })
 
 Cypress.Commands.add("projectOpen", (projectName) => {
