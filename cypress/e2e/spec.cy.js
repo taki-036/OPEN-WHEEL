@@ -13,9 +13,9 @@ describe('wheel test', () => {
   beforeEach(() => {
     // cy.projectOpen(testProject)
     // cy.contains('tr', 'test').find('[type="checkbox"]').click({force: true})
-    cy.get('tbody').find('[type="checkbox"]').click({force: true})
-    cy.contains('button', 'OPEN').click({force: true})
-    cy.viewport('macbook-16')
+    // cy.get('tbody').find('[type="checkbox"]').click({force: true})
+    // cy.contains('button', 'OPEN').click({force: true})
+    // cy.viewport('macbook-16')
   })
 
   afterEach(() => {
@@ -28,6 +28,9 @@ describe('wheel test', () => {
   })
 
   it.only('test1', () => {
+    cy.get('tbody').find('[type="checkbox"]').click({force: true})
+    cy.contains('button', 'OPEN').click({force: true})
+    
     cy.taskMake('task0')
     cy.clickFilesTab()
 
@@ -44,6 +47,9 @@ describe('wheel test', () => {
   })
 
   it.only('test3', () => {
+    cy.get('tbody').find('[type="checkbox"]').click({force: true})
+    cy.contains('button', 'OPEN').click({force: true})
+    
     cy.taskMake('task0')
     cy.clickFilesTab()
 
