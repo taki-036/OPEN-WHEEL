@@ -27,7 +27,7 @@ describe('wheel test', () => {
     cy.assertAll()
   })
 
-  it.only('test1', () => {
+  it('test1', () => {
     cy.clickFilesTab()
 
     cy.contains('button', 'Files').then($el => {
