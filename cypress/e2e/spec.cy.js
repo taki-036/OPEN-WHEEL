@@ -46,14 +46,14 @@ describe('wheel test', () => {
     }
 
     cy.removeTask('task0')
-    cy.get('[href="./home"]').click()
+    // cy.get('[href="./home"]').click()
   })
 
   it.only('test3', () => {
     // cy.pause()
     // cy.get('tbody').find('[type="checkbox"]').click({force: true})
-    cy.contains('test').parent().siblings().first().click()
-    cy.contains('button', 'OPEN').click({force: true})
+    // cy.contains('test').parent().siblings().first().click()
+    // cy.contains('button', 'OPEN').click({force: true})
     
     cy.taskMake('task0')
     cy.clickFilesTab()
@@ -72,7 +72,7 @@ describe('wheel test', () => {
     }
 
     cy.removeTask('task0')
-    cy.get('[href="./home"]').click()
+    // cy.get('[href="./home"]').click()
   })
 
   it('test4', () => {
