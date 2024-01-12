@@ -19,7 +19,7 @@ describe('wheel test', () => {
   })
 
   afterEach(() => {
-    cy.get('[href="./home"]').click()
+    // cy.get('[href="./home"]').click()
   })
 
   after(() => {
@@ -44,6 +44,7 @@ describe('wheel test', () => {
     }
 
     cy.removeTask('task0')
+    cy.get('[href="./home"]').click()
   })
 
   it.only('test3', () => {
@@ -67,6 +68,7 @@ describe('wheel test', () => {
     }
 
     cy.removeTask('task0')
+    cy.get('[href="./home"]').click()
   })
 
   it('test4', () => {
