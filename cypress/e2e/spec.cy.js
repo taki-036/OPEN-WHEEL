@@ -8,7 +8,7 @@ describe('wheel test', () => {
   })
 
   beforeEach(() => {
-    cy.projectOpen(testProject)
+    // cy.projectOpen(testProject)
     cy.viewport('macbook-16')
   })
 
@@ -22,6 +22,8 @@ describe('wheel test', () => {
   })
 
   it('test1', () => {
+    cy.contains('tr', projectName).find('[type="checkbox"]').click({force: true})
+    cy.contains('button', 'OPEN').click({force: true})
     cy.taskMake('task0')
     cy.clickFilesTab()
 
