@@ -5,17 +5,17 @@ describe('wheel test', () => {
   before(() => {
     cy.visit('/')
     cy.projectMake(testProject)
-    cy.projectOpen(testProject)
-    cy.viewport('macbook-16')
-  })
-
-  beforeEach(() => {
     // cy.projectOpen(testProject)
     // cy.viewport('macbook-16')
   })
 
+  beforeEach(() => {
+    cy.projectOpen(testProject)
+    cy.viewport('macbook-16')
+  })
+
   afterEach(() => {
-    // cy.get('[href="./home"]').click()
+    cy.get('[href="./home"]').click()
   })
 
   after(() => {
