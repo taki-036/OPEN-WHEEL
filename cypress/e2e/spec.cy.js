@@ -28,6 +28,7 @@ describe('wheel test', () => {
   })
 
   it.only('test1', () => {
+    cy.pause()
     cy.get('tbody').find('[type="checkbox"]').click({force: true})
     cy.contains('button', 'OPEN').click({force: true})
     
@@ -48,6 +49,7 @@ describe('wheel test', () => {
   })
 
   it.only('test3', () => {
+    cy.pause()
     cy.get('tbody').find('[type="checkbox"]').click({force: true})
     cy.contains('button', 'OPEN').click({force: true})
     
