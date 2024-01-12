@@ -86,7 +86,7 @@ Cypress.Commands.add("taskMake", (taskName) => {
 
 // drag&drop task
 Cypress.Commands.add("dragAndDropTask", (x, y, taskName) => {
-  cy.wait(1000).then(() => {
+  cy.wait(3000).then(() => {
     cy.get('#task')
   })
   cy.get('#task')
