@@ -23,9 +23,9 @@ describe('wheel test', () => {
 
   it.only('test1', () => {
     cy.contains('button', 'NEW').click()
-    cy.contains('label', 'project name').siblings().children('input').type(projectName, {force: true})
+    cy.contains('label', 'project name').siblings().children('input').type('test', {force: true})
     cy.contains('button', 'create').click()
-    cy.contains('tr', projectName).find('[type="checkbox"]').click({force: true})
+    cy.contains('tr', 'test').find('[type="checkbox"]').click({force: true})
     cy.contains('button', 'OPEN').click({force: true})
     cy.taskMake('task0')
     cy.clickFilesTab()
