@@ -4,20 +4,22 @@ describe('wheel test', () => {
   const screenShotFlg = false
   before(() => {
     cy.visit('/')
-    cy.projectMake(testProject)
+    cy.projectMake('test')
     // cy.contains('button', 'NEW').click()
     // cy.contains('label', 'project name').siblings().children('input').type(testProject, {force: true})
     // cy.contains('button', 'create').click()
   })
 
   beforeEach(() => {
-    cy.projectOpen(testProject)
+    // cy.projectOpen(testProject)
+    cy.contains('tr', 'test').find('[type="checkbox"]').click({force: true})
+    cy.contains('button', 'OPEN').click({force: true})
+    cy.taskMake('task0')
     cy.viewport('macbook-16')
   })
 
   afterEach(() => {
-    cy.visit('/')
-    cy.projectMake(testProject)
+    cy.get('[href="./home"]').click()
   })
 
   after(() => {
@@ -26,9 +28,6 @@ describe('wheel test', () => {
   })
 
   it.only('test1', () => {
-    // cy.contains('tr', testProject).find('[type="checkbox"]').click({force: true})
-    // cy.contains('button', 'OPEN').click({force: true})
-    // cy.taskMake('task0')
     cy.clickFilesTab()
 
     cy.contains('button', 'Files').then($el => {
@@ -44,9 +43,6 @@ describe('wheel test', () => {
   })
 
   it.only('test3', () => {
-    // cy.contains('tr', testProject).find('[type="checkbox"]').click({force: true})
-    // cy.contains('button', 'OPEN').click({force: true})
-    // cy.taskMake('task0')
     cy.taskMake('task0')
     cy.clickFilesTab()
 
