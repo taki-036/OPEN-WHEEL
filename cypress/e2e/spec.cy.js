@@ -27,7 +27,7 @@ describe('wheel test', () => {
     cy.assertAll()
   })
 
-  it('test1', () => {
+  it.only('test1', () => {
     cy.clickFilesTab()
 
     cy.contains('button', 'Files').then($el => {
@@ -42,7 +42,7 @@ describe('wheel test', () => {
     cy.removeTask('task0')
   })
 
-  it('test3', () => {
+  it.only('test3', () => {
     cy.taskMake('task0')
     cy.clickFilesTab()
 
