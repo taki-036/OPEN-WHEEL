@@ -28,6 +28,7 @@ describe('wheel test', () => {
   })
 
   it.only('test1', () => {
+    cy.taskMake('task0')
     cy.clickFilesTab()
 
     cy.contains('button', 'Files').then($el => {
