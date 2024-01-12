@@ -4,7 +4,7 @@ describe('wheel test', () => {
   const screenShotFlg = false
   before(() => {
     cy.visit('/')
-    cy.projectMake(testProject)
+    // cy.projectMake(testProject)
   })
 
   beforeEach(() => {
@@ -22,6 +22,9 @@ describe('wheel test', () => {
   })
 
   it.only('test1', () => {
+    cy.contains('button', 'NEW').click()
+    cy.contains('label', 'project name').siblings().children('input').type(projectName, {force: true})
+    cy.contains('button', 'create').click()
     cy.contains('tr', projectName).find('[type="checkbox"]').click({force: true})
     cy.contains('button', 'OPEN').click({force: true})
     cy.taskMake('task0')
