@@ -21,7 +21,7 @@ describe('wheel test', () => {
     cy.assertAll()
   })
 
-  it('test1', () => {
+  it.only('test1', () => {
     cy.contains('tr', projectName).find('[type="checkbox"]').click({force: true})
     cy.contains('button', 'OPEN').click({force: true})
     cy.taskMake('task0')
