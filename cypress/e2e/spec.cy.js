@@ -5,8 +5,6 @@ describe('wheel test', () => {
   before(() => {
     cy.visit('/')
     cy.projectMake(testProject)
-    // cy.projectOpen(testProject)
-    // cy.viewport('macbook-16')
   })
 
   beforeEach(() => {
@@ -630,7 +628,7 @@ describe('wheel test', () => {
         cy.softAssert(!$el.eq(5).find('input').prop('disabled'), true, "submit command is not disabled")
         cy.softAssert($el.eq(5).find('input').prop('readonly'), true, "submit command is readonly")
         cy.softAssert(!$el.eq(6).find('input').prop('disabled'), true, "submit option is not disabled")
-        cy.softAssert($el.eq(6).find('input').prop('readonly'), true, "submit option is readonly")
+        cy.softAssert(!$el.eq(6).find('input').prop('readonly'), true, "submit option is not readonly")
       })
 
       cy.projectReload(k, testProject, 'task0')
