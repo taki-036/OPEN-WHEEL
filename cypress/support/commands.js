@@ -267,8 +267,6 @@ Cypress.Commands.add("projectReload", (k, projectName, taskName) => {
 Cypress.Commands.add("taskReload", (taskName) => {
   cy.closeTask()
   cy.clickTask(taskName)
-  // cy.get('.v-toolbar-items').children().eq(1).click().wait(100)
-  // cy.get('svg').contains(taskName).click()
 })
 
 // swicth use job scheduler
@@ -422,7 +420,6 @@ Cypress.Commands.add("fileFolderDelete", (name) => {
 // send command
 Cypress.Commands.add("sendCommand", () => {
   const configObj = {host:'localhost', port:4000, user:'testuser', pass:'passw0rd'}
-  // const configObj = {host:'localhost', port:22, user:'nagawa', pass:'unix683010'}
   cy.task("sshExecuteCmd",{
     sshconn: configObj,
     command:'dirs=`ls -tF | grep / | head -1`; ls -t ${dirs} | grep -v / | wc -l;'

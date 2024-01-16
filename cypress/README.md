@@ -13,7 +13,7 @@
 2. 'npm run test'で cypress を起動する。
 3. テストコードをローカル実行用に修正する。
 
-   - command.js の 413 行目の remotehost 設定をローカル環境用に修正する。
+   - command.js の 422 行目の remotehost 設定をローカル環境用に修正する。
    - remotehost のパスワードを spec.cy.js の 3 行目に設定する。
    - 実行したいテストケースを決定する。（対象ケースのテストコード'it'の後ろに'.only'をつける。）
 
