@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "main": "cypress.config.js",
     "scripts": {
+      "build": "cd server; npm install; cd ../client; npm install; npm run build",
       "test": "npx cypress open"
     },
     "author": "",
