@@ -20,5 +20,8 @@
       "cypress": "^13.6.2",
       "cypress-delete-downloads-folder": "^0.0.4",
       "simple-ssh": "^1.1.1"
+    },
+    "devDependencies": {
+      "husky": "^8.0.3"
     }
   }
