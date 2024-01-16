@@ -51,7 +51,7 @@ jobs:
       - run: npm install @cypress/webpack-preprocessor
       - run: npm install cypress-delete-downloads-folder
 
-      - run: cp ./cypress/cypress.config.cjs ./
+      # - run: cp -f ./cypress/cypress.config.cjs ./
         
       - name: Cypress run
         uses: cypress-io/github-action@v6
