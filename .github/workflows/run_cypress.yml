@@ -46,6 +46,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
       - run: npm install cypress
       - run: npm install simple-ssh
       - run: npm install @cypress/webpack-preprocessor
