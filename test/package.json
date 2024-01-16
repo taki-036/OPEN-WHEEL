@@ -3,7 +3,13 @@
     "version": "1.0.0",
     "main": "cypress.config.js",
     "scripts": {
+      "start": "cd server; npm start",
       "build": "cd server; npm install; cd ../client; npm install; npm run build",
+      "licenseReport": "run-s licenseReport-doc licenseReport-server licenseReport-client",
+      "licenseReport-doc": "license-report --output=csv --csvHeaders --config license-report-config.json",
+      "licenseReport-server": "license-report --package=server/package.json --output=csv --csvHeaders --config license-report-config.json",
+      "licenseReport-client": "license-report --package=client/package.json --output=csv --csvHeaders --config license-report-config.json",
+      "prepare": "husky install",
       "test": "npx cypress open"
     },
     "author": "",
