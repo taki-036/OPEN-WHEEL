@@ -42,12 +42,16 @@ jobs:
             "readyTimeout": 5000
           }]' > ~/.wheel/remotehost.json
       - run: cat ~/.wheel/remotehost.json
+
       - name: Checkout
         uses: actions/checkout@v4
+
       - run: npm install cypress
       - run: npm install simple-ssh
       - run: npm install @cypress/webpack-preprocessor
       - run: npm install cypress-delete-downloads-folder
+
+      - run: cp ./cypress/cypress.config.cjs ./
         
       - name: Cypress run
         uses: cypress-io/github-action@v6
