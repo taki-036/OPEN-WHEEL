@@ -1,7 +1,9 @@
 name: Cypress Tests
 on: 
   push:
-    branches: ["master"]
+    branches: 
+      - master
+      - autotest
 jobs:
   cypress-run:
     services:
@@ -53,4 +55,4 @@ jobs:
           build: npm run build
           start: npm start
           browser: chrome
-          config-file: cypress/cypress.config.cjs
+          # config-file: cypress/cypress.config.cjs
