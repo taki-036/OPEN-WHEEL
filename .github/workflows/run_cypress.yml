@@ -23,6 +23,7 @@ jobs:
         node-version: [20.x]
     steps:
       - run: mkdir -p ~/.wheel
+
       - run: >
           echo '[{
             "name": "testServer",
@@ -41,9 +42,17 @@ jobs:
             "maxStatusCheckError": 10,
             "readyTimeout": 5000
           }]' > ~/.wheel/remotehost.json
+
       - run: cat ~/.wheel/remotehost.json
+
       - name: Checkout
         uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
       - run: npm install cypress
       - run: npm install simple-ssh
       - run: npm install @cypress/webpack-preprocessor
@@ -55,4 +64,3 @@ jobs:
           build: npm run build
           start: npm start
           browser: chrome
-          # config-file: cypress/cypress.config.cjs
