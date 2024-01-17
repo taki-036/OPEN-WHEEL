@@ -145,7 +145,7 @@ describe('wheel test', () => {
     cy.removeTask('task0')
   })
 
-  it('test10', () => {
+  it.only('test10', () => {
     cy.taskMake('task0')
     cy.scriptMake('a.txt', 'aaa')
     cy.clickFilesTab()
