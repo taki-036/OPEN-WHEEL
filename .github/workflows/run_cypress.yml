@@ -46,10 +46,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # - uses: actions/setup-node@v4
-      #   with:
-      #     node-version: "20"
-      #     cache: npm
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
 
       - run: npm install cypress
       - run: npm install simple-ssh
@@ -62,7 +62,7 @@ jobs:
           build: npm run build
           start: npm start
           browser: chrome
-          command: npx cypress run
+          # command: npx cypress run
           # wait-on: "http://localhost:8089"
           # spec: |
           #   cypress/e2e/spec.cy.js
