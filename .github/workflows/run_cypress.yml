@@ -66,4 +66,4 @@ jobs:
           wait-on: "http://localhost:8089"
           spec: |
             cypress/e2e/spec.cy.js
-          wait-on-timeout: 300
+          wait-on-timeout: 30000
