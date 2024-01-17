@@ -981,7 +981,7 @@ describe('wheel test', () => {
     cy.removeTask('task0')
   })
   
-  it.only('test39', () => {
+  it('test39', () => {
     cy.taskMake('task0')
     cy.hostSelect('testServer')
     cy.scriptMake('run.sh', 'echo test1 > 111.txt\necho test2 > 222.txt\necho test3 > 333.txt')
@@ -1013,7 +1013,6 @@ describe('wheel test', () => {
       cy.screenshot('test39: 222.txt is deleted', {overwrite: true, capture: 'runner'})
     }
 
-    // cy.get('[role="group"]').children()
     cy.contains('button', 'Files').siblings().contains('*.txt').parent().siblings().children().then($el => {
       cy.softAssert($el.eq(0).text(), '111.txt')
       cy.softAssert($el.eq(1).text(), '333.txt')
