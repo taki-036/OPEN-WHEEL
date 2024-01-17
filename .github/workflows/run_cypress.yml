@@ -62,6 +62,6 @@ jobs:
           build: npm run build
           start: npm start
           browser: chrome
-          spec: cypress/e2e/spec.cy.js
-          wait-on: "http://localhost:8089"
-          wait-on-timeout: 30000
+          # spec: cypress/e2e/spec.cy.js
+          # wait-on: "http://localhost:8089"
+          # wait-on-timeout: 30000
