@@ -86,7 +86,7 @@ Cypress.Commands.add("taskMake", (taskName) => {
 
 // drag&drop task
 Cypress.Commands.add("dragAndDropTask", (x, y, taskName) => {
-  cy.wait(5000).then(() => {
+  cy.wait(500).then(() => {
     cy.get('#task')
   })
   cy.get('#task')
@@ -226,12 +226,12 @@ Cypress.Commands.add("openScriptSelectBox", () => {
 
 // listBoxから指定の値を選択する。
 Cypress.Commands.add("selectListBox", (text) => {
-  cy.get('[role="listbox"]').contains('div', text).click()
+  cy.get('[role="listbox"]').find('.v-list-item-title').contains(text).click()
 })
 
 // click Console
 Cypress.Commands.add("clickConsole", () => {
-  cy.get('[type="button"]').eq(13).click()
+  cy.get('footer').find('[type="button"]').eq(0).click()
 })
 
 // click info tab
@@ -314,8 +314,8 @@ Cypress.Commands.add("scriptEdit", (scriptName, script) => {
   cy.contains(scriptName).click()
   cy.get('[href="/editor"]').click().wait(100)
   cy.get('#editor').find('textarea').type(script, {force: true})
-  cy.contains('save all files').click()
   cy.get('[href="/graph"]').click().wait(100)
+  cy.get('.v-overlay__content').contains('button', 'Save All').click().wait(100)
 })
 
 // select script
@@ -362,12 +362,12 @@ Cypress.Commands.add("infoOpen", (time) => {
 // Project　exec
 Cypress.Commands.add("execProject", () => {
   cy.closeTask()
-  cy.get('[type="button"]').eq(3).click().wait(100)
+  cy.get('header').find('.v-card__loader').siblings().eq(0).click().wait(100)
 })
 
 // Project Reset
 Cypress.Commands.add("resetProject", () => {
-  cy.get('[type="button"]').eq(6).click()
+  cy.get('header').find('.v-card__loader').siblings().eq(2).click().wait(100)
   cy.contains('[type="button"]', 'ok').click()
 })
 
