@@ -147,7 +147,6 @@ describe('wheel test', () => {
   it('test10', () => {
     cy.taskMake('task0')
     cy.scriptMake('a.txt', 'aaa')
-    cy.clickFilesTab()
     cy.clickFileFolder('a.txt')
 
     cy.clickFilesTab(6)
@@ -579,7 +578,6 @@ describe('wheel test', () => {
   it('test27', () => {
     cy.taskMake('task0')
     cy.scriptMake('run.sh', 'echo test')
-    cy.clickFilesTab()
     cy.openScriptSelectBox()
     cy.selectListBox('run.sh')
     
