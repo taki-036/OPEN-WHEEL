@@ -226,7 +226,7 @@ Cypress.Commands.add("openScriptSelectBox", () => {
 
 // listBoxから指定の値を選択する。
 Cypress.Commands.add("selectListBox", (text) => {
-  cy.get('[role="listbox"]').find('.v-list-item-title').contains(text).click()
+  cy.get('[role="listbox"]').contains('div', text).click()
 })
 
 // click Console
