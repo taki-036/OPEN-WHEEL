@@ -126,7 +126,6 @@ describe('wheel test', () => {
     const filepath = path.join(downloadsFolder, 'a.txt')
     cy.taskMake('task0')
     cy.scriptMake('a.txt', 'aaa')
-    cy.clickFilesTab()
     cy.clickFileFolder('a.txt')
 
     cy.clickFilesTab(5)
@@ -641,7 +640,7 @@ describe('wheel test', () => {
     cy.removeTask('task0')
   })
 
-  it('test29', () => {
+  it.only('test29', () => {
     cy.taskMake('task0')
     cy.openHostListBox('testServer')
     cy.selectHost('testServer')
