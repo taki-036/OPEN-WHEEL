@@ -640,7 +640,7 @@ describe('wheel test', () => {
     cy.removeTask('task0')
   })
 
-  it.only('test29', () => {
+  it('test29', () => {
     cy.taskMake('task0')
     cy.openHostListBox('testServer')
     cy.selectHost('testServer')
