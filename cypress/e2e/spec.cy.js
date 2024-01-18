@@ -873,6 +873,7 @@ describe('wheel test', () => {
     cy.scriptSelect('run.sh')
     cy.retryNumberType('2')
     cy.swicthUseJavascriptExpressionForConditionCheck('off')
+    cy.clickFilesTab()
     cy.scriptMake('return1.sh', 'exit 1')
     cy.openRetrySettingTab()
     cy.scriptNameForConditionCheckSelect('return1.sh')
