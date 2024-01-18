@@ -336,6 +336,7 @@ Cypress.Commands.add("scriptMake", (scriptName, script) => {
   cy.fileFolderMake('file', scriptName)
 
   cy.scriptEdit(scriptName, script)
+  cy.clickFilesTab()
 })
 
 // open stdout
