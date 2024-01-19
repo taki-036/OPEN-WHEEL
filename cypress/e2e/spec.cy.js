@@ -848,9 +848,10 @@ describe('wheel test', () => {
     cy.taskMake('task0')
     cy.openRetrySettingTab()
     cy.swicthUseJavascriptExpressionForConditionCheck('on')
+    cy.typeScriptconditionCheck('return 1;')
     
-    cy.viewport('macbook-16')
     if (screenShotFlg) {
+      cy.viewport('macbook-16')
       cy.screenshot('test35: use javascript expression for condition check on', {overwrite: true, capture: 'runner'})
     }
 
