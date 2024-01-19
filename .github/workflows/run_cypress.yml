@@ -28,12 +28,12 @@ jobs:
       - run: >
           echo '[{
             "name": "testServer",
-            "host": "localhost",
+            "host": ${{ secrets.WHEEL_TEST_HOSTNAME }},
             "path": "/home/testuser",
             "keyFile": null,
-            "username": "testuser",
+            "username": ${{ secrets.WHEEL_TEST_USER }},
             "numJob": 5,
-            "port": 4000,
+            "port": ${{ secrets.WHEEL_TEST_PORT }},
             "id": "dummy-id",
             "jobScheduler": "PBSPro",
             "queue": "workq",
