@@ -67,4 +67,4 @@ jobs:
           install: false
           build: npm run build
           start: npm start
-          spec: cypress/test/e2e/spec.cy.js
+          spec: test/cypress/e2e/spec.cy.js
