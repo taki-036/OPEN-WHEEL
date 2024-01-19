@@ -108,8 +108,8 @@ describe('wheel test', () => {
     cy.fileFolderMake('folder', 'folder1')
     cy.fileFolderDelete('folder1')
 
-    cy.contains('button', 'Files').scrollIntoView()
     if (screenShotFlg) {
+      cy.contains('button', 'Files').scrollIntoView()
       cy.screenshot('test6: folder1 is not exist', {overwrite: true, capture: 'fullPage'})
     }
 
@@ -126,14 +126,13 @@ describe('wheel test', () => {
     const filepath = path.join(downloadsFolder, 'a.txt')
     cy.taskMake('task0')
     cy.scriptMake('a.txt', 'aaa')
-    cy.clickFilesTab()
     cy.clickFileFolder('a.txt')
 
     cy.clickFilesTab(5)
     cy.contains('a', 'download').click()
 
-    cy.contains('button', 'Files').scrollIntoView()
     if (screenShotFlg) {
+      cy.contains('button', 'Files').scrollIntoView()
       cy.screenshot('test9: "a.txt" is writed "aaa" at download file', {overwrite: true, capture: 'fullPage'})
     }
 
@@ -148,7 +147,6 @@ describe('wheel test', () => {
   it('test10', () => {
     cy.taskMake('task0')
     cy.scriptMake('a.txt', 'aaa')
-    cy.clickFilesTab()
     cy.clickFileFolder('a.txt')
 
     cy.clickFilesTab(6)
@@ -156,8 +154,10 @@ describe('wheel test', () => {
     cy.contains('copy file path').next().find('button').click()
     cy.contains('[type="button"]', 'ok').click()
 
-    cy.contains('button', 'Files').scrollIntoView()
-    cy.screenshot('test10: script path is copied at clipboard', {overwrite: true, capture: 'fullPage'})
+    if (screenShotFlg) {
+      cy.contains('button', 'Files').scrollIntoView()
+      cy.screenshot('test10: script path is copied at clipboard', {overwrite: true, capture: 'fullPage'})
+    }
 
     cy.window().its('navigator.clipboard').then((clip) => clip.readText()).then($el => {
       // cy.softAssert($el, '/root/test.wheel/task0/a.txt', 'script path is copied at clipboard')
@@ -177,8 +177,8 @@ describe('wheel test', () => {
     cy.clickFileFolder('folder1')
     cy.clickFileFolder('folder1').wait(100)
 
-    cy.contains('button', 'Files').focus().scrollIntoView()
     if (screenShotFlg) {
+      cy.contains('button', 'Files').focus().scrollIntoView()
       cy.screenshot('test11: file1 is displaied', {overwrite: true, capture: 'viewport'})
     }
 
@@ -200,8 +200,8 @@ describe('wheel test', () => {
     cy.clickFilesTab().wait(300)
     cy.clickFilesTab().wait(100)
 
-    cy.contains('button', 'Files').focus().scrollIntoView()
     if (screenShotFlg) {
+      cy.contains('button', 'Files').focus().scrollIntoView()
       cy.screenshot('test12: file* is exist', {overwrite: true, capture: 'viewport'})
     }
 
@@ -543,6 +543,7 @@ describe('wheel test', () => {
     cy.scriptMake('run.sh', 'echo test')
     
     Cypress._.times(2, (k) => {
+      cy.clickFilesTab()
       cy.openScriptSelectBox()
       cy.get('.v-overlay-container').find('.v-list-item-title').then($el => {
         cy.softAssert($el.text(), 'run.sh', "script is exist in listbox")
@@ -557,7 +558,7 @@ describe('wheel test', () => {
     })
 
     cy.execProject()
-    cy.stdoutOpen(2000)
+    cy.stdoutOpen(7000)
     
     cy.viewport('macbook-16')
     if (screenShotFlg) {
@@ -847,9 +848,10 @@ describe('wheel test', () => {
     cy.taskMake('task0')
     cy.openRetrySettingTab()
     cy.swicthUseJavascriptExpressionForConditionCheck('on')
+    cy.typeScriptconditionCheck('return 1;')
     
-    cy.viewport('macbook-16')
     if (screenShotFlg) {
+      cy.viewport('macbook-16')
       cy.screenshot('test35: use javascript expression for condition check on', {overwrite: true, capture: 'runner'})
     }
 
@@ -872,6 +874,7 @@ describe('wheel test', () => {
     cy.scriptSelect('run.sh')
     cy.retryNumberType('2')
     cy.swicthUseJavascriptExpressionForConditionCheck('off')
+    cy.clickFilesTab()
     cy.scriptMake('return1.sh', 'exit 1')
     cy.openRetrySettingTab()
     cy.scriptNameForConditionCheckSelect('return1.sh')
@@ -1013,7 +1016,7 @@ describe('wheel test', () => {
       cy.screenshot('test39: 222.txt is deleted', {overwrite: true, capture: 'runner'})
     }
 
-    cy.get('[role="group"]').children().then($el => {
+    cy.contains('button', 'Files').siblings().contains('*.txt').parent().siblings().children().then($el => {
       cy.softAssert($el.eq(0).text(), '111.txt')
       cy.softAssert($el.eq(1).text(), '333.txt')
     })
@@ -1087,7 +1090,7 @@ describe('wheel test', () => {
     })
 
     cy.execProject()
-    cy.passwordType(password).wait(1000)
+    cy.passwordType(password).wait(5000)
 
     cy.viewport('macbook-16')
     if (screenShotFlg) {
