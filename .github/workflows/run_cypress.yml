@@ -62,8 +62,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
+          working-directory: test
           build: npm run build
           start: npm start
           browser: chrome
           spec: cypress/test/e2e/spec.cy.js
-          working-directory: test
