@@ -3,6 +3,7 @@ on:
   push:
     branches: 
       - master
+      - autotest
       - cypress_test
 jobs:
   cypress-run:
