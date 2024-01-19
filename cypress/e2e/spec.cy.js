@@ -520,10 +520,10 @@ describe('wheel test', () => {
     cy.get('svg').find('polygon').eq(0)
       .trigger("mousedown", { screenX: 272, screenY: 272 })
     cy.get('svg').contains('results').siblings()
-      .trigger('mouseup', { screenX: 300, screenY: 600 }).wait(1000)
+      .trigger('mouseup', { screenX: 300, screenY: 600 }).wait(3000)
     
-    cy.viewport('macbook-16')
     if (screenShotFlg) {
+      cy.viewport('macbook-16')
       cy.screenshot('test25: path is started from "task0 to "task1"', {overwrite: true, capture: 'runner'})
     }
 
