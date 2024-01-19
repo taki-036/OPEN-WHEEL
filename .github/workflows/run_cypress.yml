@@ -28,12 +28,12 @@ jobs:
       - run: >
           echo '[{
             "name": "testServer",
-            "host": ${{ secrets.WHEEL_TEST_HOSTNAME }},
+            "host": "localhost",
             "path": "/home/testuser",
             "keyFile": null,
-            "username": ${{ secrets.WHEEL_TEST_USER }},
+            "username": "testuser",
             "numJob": 5,
-            "port": ${{ secrets.WHEEL_TEST_PORT }},
+            "port": 4000,
             "id": "dummy-id",
             "jobScheduler": "PBSPro",
             "queue": "workq",
@@ -65,4 +65,5 @@ jobs:
           build: npm run build
           start: npm start
           browser: chrome
-          spec: cypress/e2e/spec.cy.js
+          spec: cypress/test/e2e/spec.cy.js
+          working-directory: test
