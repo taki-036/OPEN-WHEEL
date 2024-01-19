@@ -1090,7 +1090,7 @@ describe('wheel test', () => {
     })
 
     cy.execProject()
-    cy.passwordType(password).wait(1000)
+    cy.passwordType(password).wait(5000)
 
     cy.viewport('macbook-16')
     if (screenShotFlg) {
