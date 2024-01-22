@@ -575,7 +575,7 @@ describe('wheel test', () => {
     cy.removeTask('task0')
   })
 
-  it.only('test27', () => {
+  it('test27', () => {
     cy.taskMake('task0')
     cy.scriptMake('run.sh', 'echo test')
     cy.openScriptSelectBox()
