@@ -31,12 +31,12 @@ jobs:
       - run: >
           echo '[{
             "name": "testServer",
-            "host": "localhost",
+            "host": $WHEEL_TEST_HOSTNAME,
             "path": "/home/testuser",
             "keyFile": null,
-            "username": "testuser",
+            "username": $WHEEL_TEST_USER,
             "numJob": 5,
-            "port": 4000,
+            "port": $WHEEL_TEST_PORT,
             "id": "dummy-id",
             "jobScheduler": "PBSPro",
             "queue": "workq",
