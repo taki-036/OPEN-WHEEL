@@ -18,9 +18,6 @@ jobs:
       WHEEL_TEST_REMOTE_PASSWORD: passw0rd
       TZ: JST-9
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      WHEEL_TEST_HOSTNAME: "localhost"
-      WHEEL_TEST_PORT: 4000
-      WHEEL_TEST_USER: "testuser"
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -31,12 +28,12 @@ jobs:
       - run: >
           echo '[{
             "name": "testServer",
-            "host": $WHEEL_TEST_HOSTNAME,
+            "host": ${{ secrets.WHEEL_TEST_HOSTNAME }},
             "path": "/home/testuser",
             "keyFile": null,
-            "username": $WHEEL_TEST_USER,
+            "username": ${{ secrets.WHEEL_TEST_USER }},
             "numJob": 5,
-            "port": $WHEEL_TEST_PORT,
+            "port": ${{ secrets.WHEEL_TEST_PORT }},
             "id": "dummy-id",
             "jobScheduler": "PBSPro",
             "queue": "workq",
