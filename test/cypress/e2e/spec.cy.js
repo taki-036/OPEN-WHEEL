@@ -904,7 +904,7 @@ describe('wheel test', () => {
     cy.removeTask('task0')
   })
   
-  it('test37', () => {
+  it.only('test37', () => {
     cy.taskMake('task0')
     cy.hostSelect('testServer')
     cy.scriptMake('run.sh', 'echo test1 > 111.txt\necho test2 > 222.txt\necho test3 > 333.txt')
@@ -922,7 +922,7 @@ describe('wheel test', () => {
     })
 
     cy.execProject()
-    cy.passwordType(password).wait(1000)
+    cy.passwordType(password).wait(3000)
 
     cy.clickTask('task0')
     cy.clickFilesTab()
