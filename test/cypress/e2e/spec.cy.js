@@ -1075,7 +1075,7 @@ describe('wheel test', () => {
     cy.removeTask('task0')
   })
   
-  it('test41', () => {
+  it.only('test41', () => {
     cy.taskMake('task0')
     cy.hostSelect(remotehost)
     cy.scriptMake('run.sh', 'echo test')
