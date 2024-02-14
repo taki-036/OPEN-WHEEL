@@ -542,7 +542,7 @@ describe('wheel test', () => {
     cy.removeTask('task1')
   })
 
-  it('test26', () => {
+  it.only('test26', () => {
     cy.taskMake('task0')
     cy.scriptMake('run.sh', 'echo test')
     
